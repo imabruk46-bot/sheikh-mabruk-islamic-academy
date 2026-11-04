@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#064e3b">
+  <title>Sheikh Mabruk Islamic Learning Academy</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8faf5;
+      color: #18352a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #064e3b;
+      color: white;
+      padding: 18px 6%;
+      border-bottom: 3px solid #d4af37;
+    }
+
+    .brand {
+      color: #f2d477;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .arabic {
+      color: #f2d477;
+      font-size: 19px;
+      margin-top: 5px;
+    }
+
+    nav {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px;
+      background: linear-gradient(140deg, #064e3b, #08734f);
+      color: white;
+    }
+
+    .hero h1 {
+      color: #f2d477;
+      font-size: clamp(28px, 6vw, 44px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #18352a;
+      padding: 12px 23px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 42px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #064e3b;
+      margin-bottom: 25px;
+      font-size: 27px;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 17px;
+    }
+
+    .course {
+      background: white;
+      padding: 23px;
+      border-radius: 12px;
+      border: 1px solid #e5dfc7;
+      box-shadow: 0 3px 12px #0000000a;
+    }
+
+    .course h3 {
+      color: #08734f;
+      margin-bottom: 8px;
+    }
+
+    .course p {
+      font-size: 14px;
+    }
+
+    .notice {
+      background: #e8f2eb;
+      border-left: 4px solid #d4af37;
+      padding: 20px;
+      border-radius: 7px;
+      max-width: 750px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      background: #043d2f;
+      color: white;
+      padding: 25px 15px;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: #f2d477;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">SHEIKH MABRUK</div>
+  <div class="arabic" dir="rtl">أكاديمية الشيخ مبروك</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <h1>Welcome to Sheikh Mabruk Islamic Learning Academy</h1>
+    <p>
+      Seeking beneficial knowledge, understanding the Qur'an
+      and learning Islam step by step.
+    </p>
+    <a class="btn" href="#courses">Explore Our Courses</a>
+  </div>
+
+  <section id="courses">
+    <h2 class="section-title">Our Learning Departments</h2>
+
+    <div class="courses">
+      <article class="course">
+        <h3>Arabic Language</h3>
+        <p>Learn Arabic letters, pronunciation, writing, reading and grammar from the beginning.</p>
+      </article>
+
+      <article class="course">
+        <h3>Qur'an Studies</h3>
+        <p>Develop Qur'an reading, recitation and memorisation skills.</p>
+      </article>
+
+      <article class="course">
+        <h3>Tajweed</h3>
+        <p>Study the rules of proper Qur'an recitation with guided lessons.</p>
+      </article>
+
+      <article class="course">
+        <h3>Islamic Studies</h3>
+        <p>Explore Sirah, Hadith, Tafsir, Tawheed and Islamic history.</p>
+      </article>
+
+      <article class="course">
+        <h3>Maliki Fiqh</h3>
+        <p>Study Islamic jurisprudence according to the Maliki school with reviewed materials.</p>
+      </article>
+
+      <article class="course">
+        <h3>Tests & Revision</h3>
+        <p>Check your understanding through exercises and learning assessments.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Our Academy</h2>
+    <div class="notice">
+      Our mission is to make beneficial Islamic knowledge
+      accessible through structured, understandable lessons.
+      Our educational materials will be reviewed by qualified teachers.
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Learn With Us</h2>
+    <p style="text-align:center">
+      A journey of knowledge begins with one lesson.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p><span>Sheikh Mabruk Islamic Learning Academy</span></p>
+  <p>أكاديمية الشيخ مبروك</p>
+  <p>Seeking beneficial knowledge, one lesson at a time.</p>
+</footer>
+
+</body>
+</html>
