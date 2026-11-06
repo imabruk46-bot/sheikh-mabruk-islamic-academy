@@ -5,94 +5,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al-Ilm Islamic Learning Portal</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; scroll-behavior: smooth; }
-        header { background-color: #0d5c3a; color: white; padding: 25px; text-align: center; }
-        nav { display: flex; justify-content: center; background: #084028; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
-        nav a { color: white; padding: 14px 20px; text-decoration: none; font-weight: bold; }
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; scroll-behavior: smooth; line-height: 1.6; }
+        header { background-color: #0d5c3a; color: white; padding: 30px 20px; text-align: center; }
+        nav { display: flex; justify-content: center; background: #084028; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        nav a { color: white; padding: 14px 18px; text-decoration: none; font-weight: bold; font-size: 15px; }
         nav a:hover { background: #0d5c3a; }
-        .container { padding: 20px; max-width: 900px; margin: auto; }
-        .card { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #0d5c3a; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; }
-        .alphabet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; text-align: center; margin-top: 15px; }
-        .letter-box { border: 1px solid #d0d0d0; padding: 15px; font-size: 28px; background: #fafafa; border-radius: 6px; font-family: serif; }
-        .letter-box small { display: block; font-size: 14px; font-family: Arial, sans-serif; color: #666; margin-top: 5px; }
-        select, audio { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; }
-        footer { text-align: center; padding: 20px; background: #084028; color: white; margin-top: 40px; }
+        .container { padding: 30px 20px; max-width: 1000px; margin: auto; }
+        .card { background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h2 { color: #0d5c3a; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; margin-top: 0; }
+        h3 { color: #084028; margin-top: 25px; }
+        
+        /* Arabic Alphabet Grid */
+        .alphabet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; text-align: center; margin-top: 15px; }
+        .letter-box { border: 1px solid #d0d0d0; padding: 12px; background: #fafafa; border-radius: 6px; }
+        .arabic-letter { font-size: 32px; font-family: serif; color: #0d5c3a; display: block; }
+        .letter-box small { display: block; font-size: 13px; color: #555; margin-top: 4px; font-weight: bold; }
+
+        /* Audio Player Controls */
+        .audio-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        @media(max-width: 600px) { .audio-controls { grid-template-columns: 1fr; } }
+        label { font-weight: bold; display: block; margin-bottom: 5px; color: #444; }
+        select, audio { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; background: #fff; }
+        audio { margin-top: 10px; }
+
+        /* Lesson content styling */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        
+        footer { text-align: center; padding: 25px; background: #084028; color: white; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Al-Ilm Islamic Learning Portal</h1>
-    <p>Learn Arabic, Quran, Tajweed, Maliki Fiqh, Sirah, & Aqidah from Scratch</p>
+    <p>Comprehensive Online Academy for Arabic, Quran, Tajweed, Maliki Fiqh, Sirah, and Aqidah</p>
 </header>
 
 <nav>
-    <a href="#arabic">Arabic Basics</a>
+    <a href="#arabic">Arabic Alphabet</a>
     <a href="#quran">Quran Audio</a>
-    <a href="#tajweed">Tajweed & Rules</a>
+    <a href="#tajweed">Tajweed Rules</a>
     <a href="#fiqh">Maliki Fiqh</a>
     <a href="#sirah">Sirah & Aqidah</a>
 </nav>
 
 <div class="container">
-    <!-- Arabic Section -->
+
+    <!-- 1. ARABIC ALPHABET SECTION (All 28 Letters) -->
     <section id="arabic" class="card">
         <h2>1. Arabic Alphabet for Beginners</h2>
-        <p>Learn the foundation of the Arabic language, starting with letter pronunciations and shapes:</p>
-        <div class="alphabet-grid">
-            <div class="letter-box">أ<br><small>Alif</small></div>
-            <div class="letter-box">ب<br><small>Baa</small></div>
-            <div class="letter-box">ت<br><small>Taa</small></div>
-            <div class="letter-box">ث<br><small>Thaa</small></div>
-            <div class="letter-box">ج<br><small>Jeem</small></div>
-            <div class="letter-box">ح<br><small>Haa</small></div>
-            <div class="letter-box">خ<br><small>Khaa</small></div>
+        <p>Learn all 28 letters of the Arabic alphabet from scratch. Master their shapes and basic phonetic pronunciations:</p>
+        <div class="alphabet-grid" id="alphabetGrid">
+            <!-- Populated via script or static full list -->
+            <div class="letter-box"><span class="arabic-letter">أ</span><small>Alif</small></div>
+            <div class="letter-box"><span class="arabic-letter">ب</span><small>Baa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ت</span><small>Taa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ث</span><small>Thaa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ج</span><small>Jeem</small></div>
+            <div class="letter-box"><span class="arabic-letter">ح</span><small>Haa</small></div>
+            <div class="letter-box"><span class="arabic-letter">خ</span><small>Khaa</small></div>
+            <div class="letter-box"><span class="arabic-letter">د</span><small>Daal</small></div>
+            <div class="letter-box"><span class="arabic-letter">ذ</span><small>Dhaal</small></div>
+            <div class="letter-box"><span class="arabic-letter">ر</span><small>Raa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ز</span><small>Zay</small></div>
+            <div class="letter-box"><span class="arabic-letter">س</span><small>Seen</small></div>
+            <div class="letter-box"><span class="arabic-letter">ش</span><small>Sheen</small></div>
+            <div class="letter-box"><span class="arabic-letter">ص</span><small>Saad</small></div>
+            <div class="letter-box"><span class="arabic-letter">ض</span><small>Daad</small></div>
+            <div class="letter-box"><span class="arabic-letter">ط</span><small>Taa (heavy)</small></div>
+            <div class="letter-box"><span class="arabic-letter">ظ</span><small>Dhaa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ع</span><small>'Ayn</small></div>
+            <div class="letter-box"><span class="arabic-letter">غ</span><small>Ghayn</small></div>
+            <div class="letter-box"><span class="arabic-letter">ف</span><small>Faa</small></div>
+            <div class="letter-box"><span class="arabic-letter">ق</span><small>Qaaf</small></div>
+            <div class="letter-box"><span class="arabic-letter">ك</span><small>Kaaf</small></div>
+            <div class="letter-box"><span class="arabic-letter">ل</span><small>Laam</small></div>
+            <div class="letter-box"><span class="arabic-letter">م</span><small>Meem</small></div>
+            <div class="letter-box"><span class="arabic-letter">ن</span><small>Noon</small></div>
+            <div class="letter-box"><span class="arabic-letter">ه</span><small>Haa</small></div>
+            <div class="letter-box"><span class="arabic-letter">و</span><small>Waw</small></div>
+            <div class="letter-box"><span class="arabic-letter">ي</span><small>Yaa</small></div>
         </div>
     </section>
 
-    <!-- Quran Audio Section -->
+    <!-- 2. QURAN AUDIO SECTION (Dynamic Multi-Reciter & All Surahs) -->
     <section id="quran" class="card">
-        <h2>2. Quran Audio Recitations</h2>
-        <p>Listen to authentic Quran recitations by renowned international reciters:</p>
-        <label for="reciter"><strong>Choose Reciter:</strong></label>
-        <select id="reciter">
-            <option value="ar.alafasy">Mishary Rashid Alafasy</option>
-            <option value="ar.abdulbasitmurattal">Abdul Basit Abdul Samad</option>
-            <option value="ar.abdurrahmaanasSudais">Abdur-Rahman As-Sudais</option>
-            <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
-        </select>
+        <h2>2. Global Quran Audio Recitations</h2>
+        <p>Listen to authentic Quranic recitations by world-renowned Qaris. Choose your reciter and select any Surah (1 to 114):</p>
         
-        <br><br>
-        <audio id="audioPlayer" controls>
-            <source src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" type="audio/mp3">
-            Your browser does not support the audio player.
+        <div class="audio-controls">
+            <div>
+                <label for="reciterSelect">Choose Reciter:</label>
+                <select id="reciterSelect">
+                    <option value="ar.abdurrahmaanasSudais">Sheikh Abdur-Rahman As-Sudais</option>
+                    <option value="ar.alafasy">Sheikh Mishary Rashid Alafasy</option>
+                    <option value="ar.minshawi">Sheikh Mohamed Siddiq El-Minshawi</option>
+                    <option value="ar.abdulbasitmurattal">Sheikh Abdul Basit Abdul Samad</option>
+                </select>
+            </div>
+            <div>
+                <label for="surahSelect">Choose Surah:</label>
+                <select id="surahSelect">
+                    <option value="1">1. Al-Fatihah (The Opening)</option>
+                    <option value="2">2. Al-Baqarah (The Cow)</option>
+                    <option value="32">32. As-Sajdah (The Prostration)</option>
+                    <option value="36">36. Ya-Sin</option>
+                    <option value="55">55. Ar-Rahman (The Beneficent)</option>
+                    <option value="67">67. Al-Mulk (The Sovereignty)</option>
+                    <option value="112">112. Al-Ikhlas (The Sincerity)</option>
+                    <option value="113">113. Al-Falaq (The Daybreak)</option>
+                    <option value="114">114. An-Nas (Mankind)</option>
+                </select>
+            </div>
+        </div>
+
+        <audio id="quranAudioPlayer" controls style="width: 100%;">
+            <source id="audioSource" src="https://cdn.islamic.network/quran/audio/128/ar.abdurrahmaanasSudais/1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
         </audio>
-        <p style="font-size: 13px; color: #666; margin-top: 8px;">Playing Surah Al-Fatihah (Verse 1)</p>
+        <p style="font-size: 13px; color: #666; margin-top: 10px;" id="audioNote">Currently playing: Surah Al-Fatihah recited by Sheikh Abdur-Rahman As-Sudais.</p>
     </section>
 
-    <!-- Tajweed Section -->
+    <!-- 3. TAJWEED RULES -->
     <section id="tajweed" class="card">
-        <h2>3. Tajweed Rules</h2>
-        <p>Master the rules of recitation, including Noon Sakinah, Meem Sakinah, Makkah/Madinah rules, and proper articulation points (Makharij).</p>
+        <h2>3. Tajweed Rules & Recitation Mechanics</h2>
+        <p>Tajweed ensures the correct pronunciation of Quranic letters and attributes. Core topics covered in this module include:</p>
+        <ul>
+            <li><strong>Makharij al-Huroof:</strong> The articulation points of letters (Throat, Tongue, Lips, Nasal passage).</li>
+            <li><strong>Sifat al-Huroof:</strong> Characteristics of letters (Whispered vs. Voiced, Heavy vs. Light).</li>
+            <li><strong>Rules of Noon Sakinah & Tanween:</strong> Izhar (Clear), Idgham (Merging), Iqlab (Conversion), and Ikhfa (Concealment).</li>
+            <li><strong>Rules of Meem Sakinah:</strong> Idgham Shafawi, Ikhfa Shafawi, and Izhar Shafawi.</li>
+            <li><strong>Madd (Prolongation):</strong> Natural vowels and secondary elongation rules (Madd Lazim, Madd Muttasil, etc.).</li>
+        </ul>
     </section>
 
-    <!-- Maliki Fiqh Section -->
+    <!-- 4. MALIKI FIQH SECTION -->
     <section id="fiqh" class="card">
-        <h2>4. Maliki Fiqh</h2>
-        <p>Essential legal rulings mapped according to the Maliki school of jurisprudence, covering Taharah (Purification), Salah (Prayer), Zakah, and Fasting.</p>
+        <h2>4. Maliki Fiqh (Islamic Jurisprudence)</h2>
+        <p>Detailed legal rulings according to the Maliki Madhab (based on foundational texts like <em>Matn Ibn Ashir</em> and <em>Al-Risalah</em> by Ibn Abi Zayd al-Qayrawani):</p>
+        <ul>
+            <li><strong>Kitab at-Taharah (Purification):</strong> Rules of Wudhu (Ablution), Ghusl (Full bath), Tayammum, and defining pure vs. impure substances (Tahir and Najis).</li>
+            <li><strong>Kitab as-Salah (Prayer):</strong> Obligations (Fara'id), recommended acts (Sunan), invalidators of prayer, and how to make up missed prayers (Qada).</li>
+            <li><strong>Kitab az-Zakah:</strong> Calculation of wealth thresholds (Nisab) on gold, silver, crops, and livestock.</li>
+            <li><strong>Kitab as-Siyam (Fasting):</strong> Rulings of Ramadan, exemptions, and compensation (Kaffarah/Fidya).</li>
+        </ul>
     </section>
 
-    <!-- Sirah & Aqidah Section -->
+    <!-- 5. SIRAH & AQIDAH SECTION -->
     <section id="sirah" class="card">
-        <h2>5. Sirah & Aqidah</h2>
-        <p>Study the biography of Prophet Muhammad (PBUH) and fundamental Islamic creeds (Aqidah and Tawhid) to build a solid spiritual foundation.</p>
+        <h2>5. Sirah (Prophetic Biography) & Aqidah (Creed)</h2>
+        <h3>The Blessed Sirah:</h3>
+        <p>A structured study of the life of Prophet Muhammad (PBUH), moving from his birth in Makkah, the years of persecution, the migration (Hijrah) to Madinah, the establishment of the Islamic state, and the final farewell pilgrimage.</p>
+        
+        <h3>Aqidah & Tawhid:</h3>
+        <p>Establishing correct Islamic beliefs based on the Quran and Sunnah:</p>
+        <ul>
+            <li><strong>Tawhid ar-Rububiyyah:</strong> Oneness of Lordship (belief that Allah is the sole Creator and Sustainer).</li>
+            <li><strong>Tawhid al-Uluhiyyah:</strong> Oneness of Worship (directing all acts of worship solely to Allah).</li>
+            <li><strong>Tawhid al-Asma was-Sifat:</strong> Belief in Allah's unique Names and Attributes without distortion or likeness to creation.</li>
+            <li><strong>The Six Pillars of Iman:</strong> Belief in Allah, His Angels, His Books, His Messengers, the Last Day, and Divine Decree (Qadar).</li>
+        </ul>
     </section>
+
 </div>
 
 <footer>
-    <p>&copy; 2026 Al-Ilm Platform. Built for Islamic Education.</p>
+    <p>&copy; 2026 Al-Ilm Islamic Learning Portal. Dedicated to spreading authentic knowledge.</p>
 </footer>
+
+<script>
+    // JavaScript logic to let users choose any reciter and any surah (1 to 114)
+    const reciterSelect = document.getElementById('reciterSelect');
+    const surahSelect = document.getElementById('surahSelect');
+    const audioPlayer = document.getElementById('quranAudioPlayer');
+    const audioSource = document.getElementById('audioSource');
+    const audioNote = document.getElementById('audioNote');
+
+    // Populate all 114 surahs dynamically into the dropdown
+    const surahNames = [
+        "Al-Fatihah", "Al-Baqarah", "Ali 'Imran", "An-Nisa'", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
+        "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra'", "Al-Kahf", "Maryam", "Taha",
+        "Al-Anbiya'", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan", "Ash-Shu'ara'", "An-Naml", "Al-Qasas", "Al-Ankabut", "Ar-Rum",
+        "Luqman", "As-Sajdah", "Al-Ahzab", "Saba'", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
+        "Fussilat", "Ash-Shura", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
+        "Ad-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadila", "Al-Hashr", "Al-Mumtahanah",
+        "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
+        "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba'", "An-Nazi'at", "'Abasa",
+        "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
+        "Ash-Shams", "Al-Layl", "Ad-Duha", "Ash-Sharh", "At-Tin", "Al-'Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-'Adiyat",
+        "Al-Qari'ah", "At-Takathur", "Al-'Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr",
+        "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
+    ];
+
+    // Clear default select options and add all 114
+    surahSelect.innerHTML = "";
+    surahNames.forEach((name, index) => {
+        let num = index + 1;
+        let opt = document.createElement('option');
+        opt.value = num;
+        opt.textContent = `${num}. ${name}`;
+        surahSelect.appendChild(opt);
+    });
+
+    function updateAudio() {
+        let reciter = reciterSelect.value;
+        let surah = surahSelect.value;
+        let reciterNameText = reciterSelect.options[reciterSelect.selectedIndex].text;
+        let surahNameText = surahSelect.options[surahSelect.selectedIndex].text;
+
+        audioSource.src = `https://cdn.islamic.network/quran/audio/128/${reciter}/${surah}.mp3`;
+        audioPlayer.load();
+        audioNote.textContent = `Currently playing: Surah ${surahNameText} recited by ${reciterNameText}.`;
+    }
+
+    reciterSelect.addEventListener('change', updateAudio);
+    surahSelect.addEventListener('change', updateAudio);
+</script>
 
 </body>
 </html>
