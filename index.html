@@ -1,222 +1,97 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#064e3b">
-  <title>Sheikh Mabruk Islamic Learning Academy</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8faf5;
-      color: #18352a;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #064e3b;
-      color: white;
-      padding: 18px 6%;
-      border-bottom: 3px solid #d4af37;
-    }
-
-    .brand {
-      color: #f2d477;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .arabic {
-      color: #f2d477;
-      font-size: 19px;
-      margin-top: 5px;
-    }
-
-    nav {
-      margin-top: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 65px 20px;
-      background: linear-gradient(140deg, #064e3b, #08734f);
-      color: white;
-    }
-
-    .hero h1 {
-      color: #f2d477;
-      font-size: clamp(28px, 6vw, 44px);
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 0 auto 25px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d4af37;
-      color: #18352a;
-      padding: 12px 23px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 42px 6%;
-    }
-
-    .section-title {
-      text-align: center;
-      color: #064e3b;
-      margin-bottom: 25px;
-      font-size: 27px;
-    }
-
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 17px;
-    }
-
-    .course {
-      background: white;
-      padding: 23px;
-      border-radius: 12px;
-      border: 1px solid #e5dfc7;
-      box-shadow: 0 3px 12px #0000000a;
-    }
-
-    .course h3 {
-      color: #08734f;
-      margin-bottom: 8px;
-    }
-
-    .course p {
-      font-size: 14px;
-    }
-
-    .notice {
-      background: #e8f2eb;
-      border-left: 4px solid #d4af37;
-      padding: 20px;
-      border-radius: 7px;
-      max-width: 750px;
-      margin: auto;
-    }
-
-    footer {
-      text-align: center;
-      background: #043d2f;
-      color: white;
-      padding: 25px 15px;
-      font-size: 13px;
-    }
-
-    footer span {
-      color: #f2d477;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Ilm Islamic Learning Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; scroll-behavior: smooth; }
+        header { background-color: #0d5c3a; color: white; padding: 25px; text-align: center; }
+        nav { display: flex; justify-content: center; background: #084028; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
+        nav a { color: white; padding: 14px 20px; text-decoration: none; font-weight: bold; }
+        nav a:hover { background: #0d5c3a; }
+        .container { padding: 20px; max-width: 900px; margin: auto; }
+        .card { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { color: #0d5c3a; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; }
+        .alphabet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; text-align: center; margin-top: 15px; }
+        .letter-box { border: 1px solid #d0d0d0; padding: 15px; font-size: 28px; background: #fafafa; border-radius: 6px; font-family: serif; }
+        .letter-box small { display: block; font-size: 14px; font-family: Arial, sans-serif; color: #666; margin-top: 5px; }
+        select, audio { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; }
+        footer { text-align: center; padding: 20px; background: #084028; color: white; margin-top: 40px; }
+    </style>
 </head>
-
 <body>
 
 <header>
-  <div class="brand">SHEIKH MABRUK</div>
-  <div class="arabic" dir="rtl">أكاديمية الشيخ مبروك</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#courses">Courses</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <h1>Al-Ilm Islamic Learning Portal</h1>
+    <p>Learn Arabic, Quran, Tajweed, Maliki Fiqh, Sirah, & Aqidah from Scratch</p>
 </header>
 
-<main>
-  <div class="hero" id="home">
-    <h1>Welcome to Sheikh Mabruk Islamic Learning Academy</h1>
-    <p>
-      Seeking beneficial knowledge, understanding the Qur'an
-      and learning Islam step by step.
-    </p>
-    <a class="btn" href="#courses">Explore Our Courses</a>
-  </div>
+<nav>
+    <a href="#arabic">Arabic Basics</a>
+    <a href="#quran">Quran Audio</a>
+    <a href="#tajweed">Tajweed & Rules</a>
+    <a href="#fiqh">Maliki Fiqh</a>
+    <a href="#sirah">Sirah & Aqidah</a>
+</nav>
 
-  <section id="courses">
-    <h2 class="section-title">Our Learning Departments</h2>
+<div class="container">
+    <!-- Arabic Section -->
+    <section id="arabic" class="card">
+        <h2>1. Arabic Alphabet for Beginners</h2>
+        <p>Learn the foundation of the Arabic language, starting with letter pronunciations and shapes:</p>
+        <div class="alphabet-grid">
+            <div class="letter-box">أ<br><small>Alif</small></div>
+            <div class="letter-box">ب<br><small>Baa</small></div>
+            <div class="letter-box">ت<br><small>Taa</small></div>
+            <div class="letter-box">ث<br><small>Thaa</small></div>
+            <div class="letter-box">ج<br><small>Jeem</small></div>
+            <div class="letter-box">ح<br><small>Haa</small></div>
+            <div class="letter-box">خ<br><small>Khaa</small></div>
+        </div>
+    </section>
 
-    <div class="courses">
-      <article class="course">
-        <h3>Arabic Language</h3>
-        <p>Learn Arabic letters, pronunciation, writing, reading and grammar from the beginning.</p>
-      </article>
+    <!-- Quran Audio Section -->
+    <section id="quran" class="card">
+        <h2>2. Quran Audio Recitations</h2>
+        <p>Listen to authentic Quran recitations by renowned international reciters:</p>
+        <label for="reciter"><strong>Choose Reciter:</strong></label>
+        <select id="reciter">
+            <option value="ar.alafasy">Mishary Rashid Alafasy</option>
+            <option value="ar.abdulbasitmurattal">Abdul Basit Abdul Samad</option>
+            <option value="ar.abdurrahmaanasSudais">Abdur-Rahman As-Sudais</option>
+            <option value="ar.minshawi">Mohamed Siddiq El-Minshawi</option>
+        </select>
+        
+        <br><br>
+        <audio id="audioPlayer" controls>
+            <source src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" type="audio/mp3">
+            Your browser does not support the audio player.
+        </audio>
+        <p style="font-size: 13px; color: #666; margin-top: 8px;">Playing Surah Al-Fatihah (Verse 1)</p>
+    </section>
 
-      <article class="course">
-        <h3>Qur'an Studies</h3>
-        <p>Develop Qur'an reading, recitation and memorisation skills.</p>
-      </article>
+    <!-- Tajweed Section -->
+    <section id="tajweed" class="card">
+        <h2>3. Tajweed Rules</h2>
+        <p>Master the rules of recitation, including Noon Sakinah, Meem Sakinah, Makkah/Madinah rules, and proper articulation points (Makharij).</p>
+    </section>
 
-      <article class="course">
-        <h3>Tajweed</h3>
-        <p>Study the rules of proper Qur'an recitation with guided lessons.</p>
-      </article>
+    <!-- Maliki Fiqh Section -->
+    <section id="fiqh" class="card">
+        <h2>4. Maliki Fiqh</h2>
+        <p>Essential legal rulings mapped according to the Maliki school of jurisprudence, covering Taharah (Purification), Salah (Prayer), Zakah, and Fasting.</p>
+    </section>
 
-      <article class="course">
-        <h3>Islamic Studies</h3>
-        <p>Explore Sirah, Hadith, Tafsir, Tawheed and Islamic history.</p>
-      </article>
-
-      <article class="course">
-        <h3>Maliki Fiqh</h3>
-        <p>Study Islamic jurisprudence according to the Maliki school with reviewed materials.</p>
-      </article>
-
-      <article class="course">
-        <h3>Tests & Revision</h3>
-        <p>Check your understanding through exercises and learning assessments.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about">
-    <h2 class="section-title">About Our Academy</h2>
-    <div class="notice">
-      Our mission is to make beneficial Islamic knowledge
-      accessible through structured, understandable lessons.
-      Our educational materials will be reviewed by qualified teachers.
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Learn With Us</h2>
-    <p style="text-align:center">
-      A journey of knowledge begins with one lesson.
-    </p>
-  </section>
-</main>
+    <!-- Sirah & Aqidah Section -->
+    <section id="sirah" class="card">
+        <h2>5. Sirah & Aqidah</h2>
+        <p>Study the biography of Prophet Muhammad (PBUH) and fundamental Islamic creeds (Aqidah and Tawhid) to build a solid spiritual foundation.</p>
+    </section>
+</div>
 
 <footer>
-  <p><span>Sheikh Mabruk Islamic Learning Academy</span></p>
-  <p>أكاديمية الشيخ مبروك</p>
-  <p>Seeking beneficial knowledge, one lesson at a time.</p>
+    <p>&copy; 2026 Al-Ilm Platform. Built for Islamic Education.</p>
 </footer>
 
 </body>
