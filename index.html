@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#064e3b">
 <title>Sheikh Mabruk Islamic Learning Academy</title>
-
 <style>
 :root{--g:#064e3b;--g2:#08734f;--gold:#d6ad45;--line:#dce9e1;--ink:#18352c}
 *{box-sizing:border-box}
@@ -29,10 +28,6 @@ main{max-width:1200px;margin:20px auto;padding:0 14px}
 .contact-form input,.contact-form textarea{width:100%;padding:10px;border:1px solid #b9cec1;border-radius:9px;font:inherit}
 .contact-form textarea{min-height:120px}
 .contact-status{font-weight:bold;color:var(--g)}
-h2,h3{color:var(--g)}
-h2{margin:0 0 10px}
-.muted{color:#64756e;font-size:.92rem}
-.note{background:#fff8e5;border-left:4px solid var(--gold);padding:10px;border-radius:8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
 .tile,.word{background:#f5faf6;border:1px solid var(--line);border-radius:11px;padding:12px}
 button,select,input{font:inherit}
@@ -56,19 +51,23 @@ select,input[type=search]{padding:9px;border:1px solid #b9cec1;border-radius:9px
 .translation{color:#42564c}
 .basmala{text-align:center;color:#956d13;font-size:1.8rem;padding:10px}
 audio{width:100%}
-footer{text-align:center;background:var(--g);color:white;padding:23px}
+.audio-panel{background:#edf6f0;border:2px solid var(--gold);border-radius:12px;padding:13px;margin:12px 0}
+.audio-panel h3{margin:0 0 8px}
 .hidden{display:none!important}
+.note{background:#fff8e5;border-left:4px solid var(--gold);padding:10px;border-radius:8px}
+.muted{color:#64756e;font-size:.92rem}
+h2,h3{color:var(--g)}
+h2{margin:0 0 10px}
+footer{text-align:center;background:var(--g);color:white;padding:23px}
 a{color:#08734f}
 @media(max-width:760px){
 .book-spread{grid-template-columns:1fr}
 .book-page{min-height:68vh;max-height:75vh;padding:15px}
-.book-page.mobile-hidden{display:none}
 .book-controls button{padding:8px 10px}
 .book-controls .page-count{font-size:.9rem}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -95,7 +94,6 @@ a{color:#08734f}
 </div>
 
 <main>
-
 <section class="panel" id="home">
 <h2>Welcome to the Academy</h2>
 <p>Learn Arabic letters, build vocabulary, practise handwriting, read the Qur’an and study Tajweed foundations.</p>
@@ -154,6 +152,7 @@ a{color:#08734f}
 <section class="panel" id="quran">
 <h2>4. The Noble Qur’an</h2>
 <p>Each verse is displayed with Arabic, Saheeh International English translation and transliteration.</p>
+
 <div class="row">
 <label>Surah: <select id="surah"></select></label>
 <label>Reciter:
@@ -168,18 +167,25 @@ a{color:#08734f}
 </label>
 <button id="load">Load surah</button>
 </div>
-<div class="row" style="margin-top:10px">
+
+<!-- AUDIO PLAYER MOVED UP: IT NOW APPEARS BEFORE THE VERSES -->
+<div id="audioBox" class="audio-panel hidden">
+<h3>Listen to the selected Surah</h3>
+<audio id="audio" controls preload="none">
+Your browser does not support audio playback.
+</audio>
+<p class="muted">Choose a reciter above, then press Play. Audio streams online.</p>
+</div>
+
+<div class="row">
 <button class="alt" id="both">Arabic + translation</button>
 <button class="alt" id="latinOnly">Transliteration focus</button>
 </div>
+
 <p id="status" class="muted" aria-live="polite">Choose a surah and load it.</p>
 <div id="heading"></div>
 <div id="ayahs"></div>
-<div id="audioBox" class="hidden">
-<h3>Full surah recitation — online stream</h3>
-<audio id="audio" controls preload="none"></audio>
-<p class="muted">Audio streams online; it is not downloaded into this website.</p>
-</div>
+
 <p class="note">Basmalah: Al-Fātiḥah includes it as verse 1. At-Tawbah has no opening Basmalah. For other surahs it is displayed separately, not numbered as a verse in the standard numbering used here. Verify recitation and numbering with a trusted Mushaf and teacher.</p>
 </section>
 
@@ -191,64 +197,44 @@ a{color:#08734f}
 <h3>Lesson 1: Meaning and purpose</h3>
 <p>Tajweed is giving every letter its proper articulation point and characteristics during Qur’an recitation. Learn by listening and receiving correction from a qualified teacher.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 2: Makharij al-huruf</h3>
 <p>Letters emerge from specific areas including the throat, tongue, lips, nasal passage and open mouth/throat space. Practise each sound carefully.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 3: Noon sākinah and tanween</h3>
 <p>The four main rules are Iẓhār (clear pronunciation), Idghām (merging), Iqlāb (conversion) and Ikhfā’ (concealment). The following letter determines the rule.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 4: Meem sākinah</h3>
 <p>The principal rules are Ikhfā’ Shafawī before ب, Idghām Shafawī before م, and Iẓhār Shafawī with other letters.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 5: Madd</h3>
 <p>Madd is the lengthening of a vowel in specified circumstances. Its duration depends on its category and the recitation method being learned.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 6: Qalqalah</h3>
 <p>Qalqalah is a controlled echoing quality on ق ط ب ج د when they carry sukūn. Do not add an extra vowel sound.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 7: Tafkhīm and tarqīq</h3>
 <p>Tafkhīm is a fuller, heavier sound and tarqīq is a lighter sound. Rā’ and the word Allah have context-dependent rules.</p>
 </div>
-
 <div class="lesson">
 <h3>Lesson 8: Waqf and ibtidā’</h3>
 <p>Waqf means stopping and ibtidā’ means beginning again. Observe the signs in your Mushaf and avoid stops that distort the meaning.</p>
 </div>
-
 <p class="note">These summaries are introductory, not a substitute for a recognised Tajweed text and supervised recitation.</p>
 </section>
 
 <section class="panel" id="library">
 <h2>6. Islamic Learning Library</h2>
 <div class="grid">
-<div class="tile">
-<b>Qur’an</b>
-<p><a href="https://quran.com/" target="_blank" rel="noopener">Quran.com</a></p>
-</div>
-<div class="tile">
-<b>Qur’an API</b>
-<p><a href="https://alquran.cloud/" target="_blank" rel="noopener">Al Quran Cloud</a></p>
-</div>
-<div class="tile">
-<b>Hadith reference</b>
-<p><a href="https://sunnah.com/" target="_blank" rel="noopener">Sunnah.com</a></p>
-</div>
-<div class="tile">
-<b>Islamic questions</b>
-<p><a href="https://islamqa.info/" target="_blank" rel="noopener">IslamQA</a> — compare rulings with trusted local scholars and your school of law.</p>
-</div>
+<div class="tile"><b>Qur’an</b><p><a href="https://quran.com/" target="_blank" rel="noopener">Quran.com</a></p></div>
+<div class="tile"><b>Qur’an API</b><p><a href="https://alquran.cloud/" target="_blank" rel="noopener">Al Quran Cloud</a></p></div>
+<div class="tile"><b>Hadith reference</b><p><a href="https://sunnah.com/" target="_blank" rel="noopener">Sunnah.com</a></p></div>
+<div class="tile"><b>Islamic questions</b><p><a href="https://islamqa.info/" target="_blank" rel="noopener">IslamQA</a> — compare rulings with trusted local scholars and your school of law.</p></div>
 </div>
 </section>
 
@@ -267,7 +253,6 @@ a{color:#08734f}
 <p class="contact-status" id="contactStatus" aria-live="polite"></p>
 </form>
 </section>
-
 </main>
 
 <footer>
@@ -315,7 +300,6 @@ page.classList.toggle("mobile-hidden",mobileBook()&&(i*2+j)!==currentBookPage);
 
 const start=mobileBook()?currentBookPage+1:spreadIndex*2+1;
 const end=mobileBook()?currentBookPage+1:Math.min(spreadIndex*2+2,bookSections.length);
-
 pageCount.textContent=`Page${start===end?"":"s"} ${start}${start===end?"":"–"+end} of ${bookSections.length}`;
 previousPage.disabled=currentBookPage===0;
 nextPage.disabled=currentBookPage===bookSections.length-1;
@@ -346,8 +330,7 @@ window.addEventListener("resize",()=>showBookPage(currentBookPage));
 showBookPage(0);
 
 // CONTACT FORM PLACEHOLDER
-const contactForm=document.getElementById("contactForm");
-contactForm.addEventListener("submit",event=>{
+document.getElementById("contactForm").addEventListener("submit",event=>{
 event.preventDefault();
 document.getElementById("contactStatus").textContent=
 "This demo form is not connected yet, so no message was sent. Please ask the academy administrator to connect an adult-managed inbox before using it.";
@@ -466,27 +449,21 @@ function renderWords(){
 wordGrid.innerHTML="";
 let q=search.value.toLowerCase();
 let f=filter.value;
-
 words.forEach(([ar,lat,en,cat])=>{
 if((f!=="all"&&f!==cat)||!(ar+" "+lat+" "+en).toLowerCase().includes(q))return;
-
 let d=document.createElement("div");
 d.className="word";
-
 let chars=[...ar.replace(/[\u064B-\u065F\u0670\u0640]/g,"")];
-
 d.innerHTML=`
 <div class="ar">${ar}</div>
 <b>${en}</b>
 <div class="muted">${lat}</div>
 <div class="parts">${chars.map(c=>`<span class="part ar">${c}</span>`).join("")}</div>
 <button class="alt">Hear word</button>`;
-
 d.querySelector("button").onclick=()=>say(ar);
 wordGrid.append(d);
 });
 }
-
 search.oninput=renderWords;
 filter.onchange=renderWords;
 renderWords();
@@ -520,7 +497,6 @@ cx.strokeStyle="#08734f";
 cx.lineWidth=5;
 cx.lineCap="round";
 cx.lineJoin="round";
-
 [...lines,line].forEach(s=>{
 cx.beginPath();
 s.forEach((p,i)=>i?cx.lineTo(p.x,p.y):cx.moveTo(p.x,p.y));
@@ -548,14 +524,12 @@ board.setPointerCapture(e.pointerId);
 line=[pos(e)];
 paint();
 };
-
 board.onpointermove=e=>{
 if(down){
 line.push(pos(e));
 paint();
 }
 };
-
 function finish(){
 if(down){
 down=false;
@@ -564,25 +538,21 @@ line=[];
 paint();
 }
 }
-
 board.onpointerup=finish;
 board.onpointercancel=finish;
 trace.onchange=()=>{
 lines=[];
 paint();
 };
-
 clearBtn.onclick=()=>{
 lines=[];
 line=[];
 paint();
 };
-
 undoBtn.onclick=()=>{
 lines.pop();
 paint();
 };
-
 window.addEventListener("resize",fit);
 fit();
 
@@ -591,14 +561,12 @@ async function init(){
 try{
 let r=await fetch("https://api.alquran.cloud/v1/surah");
 let j=await r.json();
-
 j.data.forEach(s=>{
 let o=document.createElement("option");
 o.value=s.number;
 o.textContent=s.number+". "+s.englishName+" — "+s.name;
 surah.append(o);
 });
-
 }catch(e){
 status.textContent="Surah list unavailable. Check your internet connection.";
 }
@@ -606,11 +574,7 @@ status.textContent="Surah list unavailable. Check your internet connection.";
 
 function safe(t){
 return String(t).replace(/[&<>"']/g,c=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#39;"
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
 }[c]));
 }
 
@@ -620,7 +584,6 @@ function showMode(){
 document.querySelectorAll(".latin").forEach(x=>{
 x.classList.toggle("hidden",mode==="both");
 });
-
 document.querySelectorAll(".translation").forEach(x=>{
 x.classList.toggle("hidden",mode==="latin");
 });
@@ -631,10 +594,12 @@ status.textContent="Loading Arabic, translation and transliteration…";
 ayahs.innerHTML="";
 heading.innerHTML="";
 audioBox.classList.add("hidden");
+audio.pause();
+audio.removeAttribute("src");
+audio.load();
 
 try{
 let n=surah.value||1;
-
 let r=await fetch(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,en.sahih,en.transliteration`);
 let j=await r.json();
 
@@ -658,23 +623,23 @@ heading.append(b);
 a.ayahs.forEach((v,i)=>{
 let d=document.createElement("article");
 d.className="ayah";
-
 d.innerHTML=`
 <div class="muted">VERSE ${v.numberInSurah}</div>
 <div class="arabic">${safe(v.text)}</div>
 <div class="latin">${safe(l.ayahs[i]?.text||"Transliteration unavailable")}</div>
 <div class="translation">${safe(t.ayahs[i]?.text||"Translation unavailable")}</div>`;
-
 ayahs.append(d);
 });
 
 showMode();
 
+// Set audio immediately after the chosen surah is loaded.
+// The player is already positioned above the written verses.
 audio.src=`https://cdn.islamic.network/quran/audio-surah/128/${reciter.value}/${n}.mp3`;
 audio.load();
 audioBox.classList.remove("hidden");
 
-status.textContent="Surah loaded. Press play to stream the recitation.";
+status.textContent="Surah loaded. The audio player is above the verses. Press Play to listen.";
 
 }catch(e){
 status.textContent="Unable to load Qur’an data. Check your connection and try again. "+e.message;
@@ -692,7 +657,7 @@ audio.load();
 reciter.onchange=()=>{
 if(!audioBox.classList.contains("hidden")){
 setSurahAudio();
-status.textContent="Reciter changed. Press play to stream the selected recitation.";
+status.textContent="Reciter changed. Press Play to stream the selected recitation.";
 }
 };
 
@@ -712,6 +677,5 @@ showMode();
 
 init();
 </script>
-
 </body>
 </html>
