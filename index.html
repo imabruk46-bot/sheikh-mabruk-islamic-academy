@@ -1,681 +1,678 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#064e3b">
 <title>Sheikh Mabruk Islamic Learning Academy</title>
 <style>
-:root{--g:#064e3b;--g2:#08734f;--gold:#d6ad45;--line:#dce9e1;--ink:#18352c}
+:root{
+ --g:#064e3b;--g2:#08734f;--gold:#d6ad45;
+ --cream:#fffdf5;--line:#dce9e1;--ink:#18352c;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#f4f8f4;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
-header{background:linear-gradient(135deg,#043d30,#08734f);color:white;text-align:center;padding:28px 15px;border-bottom:5px solid var(--gold)}
-header h1{font-size:clamp(1.5rem,5vw,2.3rem);line-height:1.2}
-header .ar{font-size:1.5rem;color:#f5d982}
-.ar{font-family:"Noto Naskh Arabic","Amiri","Times New Roman",serif;direction:rtl}
-nav{position:sticky;top:0;background:white;display:flex;gap:8px;overflow:auto;padding:10px;z-index:3;border-bottom:1px solid var(--line)}
-nav a{white-space:nowrap;text-decoration:none;color:var(--g);background:#edf6f0;border-radius:25px;padding:8px 12px;font-weight:bold}
-main{max-width:1200px;margin:20px auto;padding:0 14px}
-.book-controls{max-width:1200px;margin:14px auto 0;padding:0 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.book-controls .page-count{font-weight:bold;color:var(--g);text-align:center}
-.book-spread{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch}
-.book-spread.active{display:grid}
-.book-page{min-width:0;min-height:72vh;max-height:78vh;overflow-y:auto;overscroll-behavior:contain;background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #0b51300a;scroll-behavior:smooth}
-.book-page::-webkit-scrollbar{width:8px}
-.book-page::-webkit-scrollbar-thumb{background:#b7cdbd;border-radius:10px}
-.contact-form{display:grid;gap:10px;max-width:650px}
-.contact-form input,.contact-form textarea{width:100%;padding:10px;border:1px solid #b9cec1;border-radius:9px;font:inherit}
-.contact-form textarea{min-height:120px}
-.contact-status{font-weight:bold;color:var(--g)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
-.tile,.word{background:#f5faf6;border:1px solid var(--line);border-radius:11px;padding:12px}
-button,select,input{font:inherit}
-button{background:var(--g);color:white;border:0;border-radius:9px;padding:9px 13px;font-weight:bold}
-button.alt{background:#e7f3eb;color:var(--g)}
-button:disabled{opacity:.45}
-select,input[type=search]{padding:9px;border:1px solid #b9cec1;border-radius:9px;max-width:100%}
-.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
-.letters{display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:8px}
-.letter{text-align:center;background:#f5faf6;border:1px solid var(--line);padding:8px;border-radius:10px}
-.letter .ar{display:block;font-size:2rem}
-.forms{font-size:1.5rem}
-.word .ar{font-size:2rem}
-.parts{display:flex;direction:rtl;gap:5px;flex-wrap:wrap;margin:7px 0}
-.part{background:#eaf5ed;border:1px solid #cfe1d5;border-radius:7px;padding:3px 9px;font-size:1.35rem}
-#board{width:100%;height:260px;display:block;border:2px dashed #8bb49a;border-radius:12px;background:#fffdf4;touch-action:none}
-.lesson{padding:12px;background:#f5faf6;border:1px solid var(--line);border-radius:11px;margin:10px 0}
-.ayah{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}
-.ayah .arabic{font-size:1.8rem;text-align:right;line-height:2}
-.latin{color:#936b12;font-style:italic}
-.translation{color:#42564c}
-.basmala{text-align:center;color:#956d13;font-size:1.8rem;padding:10px}
-audio{width:100%}
-.audio-panel{background:#edf6f0;border:2px solid var(--gold);border-radius:12px;padding:13px;margin:12px 0}
-.audio-panel h3{margin:0 0 8px}
+body{
+ margin:0;background:#f2f6f1;color:var(--ink);
+ font-family:Arial,sans-serif;line-height:1.65;
+}
+header{
+ background:linear-gradient(120deg,var(--g),#0b684b);
+ color:white;text-align:center;padding:25px 15px;
+ border-bottom:5px solid var(--gold);
+}
+header h1{font-size:clamp(23px,5vw,38px);margin:0;font-weight:900}
+header p{margin:7px 0 0;color:#f5e5b4}
+nav{
+ display:flex;flex-wrap:wrap;justify-content:center;gap:7px;
+ background:#fff;padding:12px;position:sticky;top:0;z-index:10;
+ box-shadow:0 2px 8px #0001;
+}
+nav button,.action{
+ border:0;border-radius:8px;padding:10px 13px;
+ background:var(--g);color:white;font-weight:bold;cursor:pointer;
+}
+nav button.active{background:var(--gold);color:#263629}
+main{max-width:1050px;margin:20px auto;padding:0 12px}
+.page{
+ display:none;background:var(--cream);padding:22px;
+ border:1px solid var(--line);border-radius:14px;
+ box-shadow:0 4px 15px #0000000a;min-height:400px;
+}
+.page.active{display:block}
+h2{color:var(--g);border-bottom:2px solid var(--gold);padding-bottom:8px}
+h3{color:var(--g)}
+.arabic{font-family:"Times New Roman",serif;direction:rtl}
+.big-arabic{font-size:36px;line-height:1.8}
+.letter-grid,.word-grid,.lesson-grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;
+}
+.tile,.lesson-card{
+ background:white;border:1px solid var(--line);border-radius:10px;
+ padding:13px;text-align:center;
+}
+.tile .arabic{font-size:32px;display:block}
+button{cursor:pointer}
+.small-btn{
+ background:var(--g2);color:white;border:0;padding:7px 10px;
+ border-radius:7px;margin:4px;
+}
+input,select,textarea{
+ width:100%;max-width:100%;padding:11px;margin:6px 0;
+ border:1px solid #b8cbbf;border-radius:7px;font-size:16px;
+}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+.controls button{padding:10px 14px}
+.notice{
+ background:#fff5d9;border-left:4px solid var(--gold);
+ padding:12px;border-radius:6px;margin:12px 0;
+}
+.navigation{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:10px;margin:20px 0 5px;
+}
+.navigation button{
+ background:var(--g);color:white;border:0;border-radius:8px;
+ padding:11px 18px;font-weight:bold;
+}
+.navigation button:disabled{opacity:.35;cursor:not-allowed}
+#pageCount{font-weight:bold;color:var(--g)}
+.lesson-panel{
+ background:#fff;border:1px solid var(--line);
+ border-radius:12px;padding:16px;margin:12px 0;
+}
+.lesson-panel .arabic{font-size:30px;line-height:2.1}
+.verse{
+ border-bottom:1px solid var(--line);padding:15px 5px;
+}
+.verse-ar{font-size:27px;line-height:2;direction:rtl;text-align:right}
+.translation{color:#344d40}
+.transliteration{color:#8a671b;font-style:italic}
+footer{
+ text-align:center;background:var(--g);color:white;
+ padding:20px;margin-top:25px;
+}
+canvas{
+ width:100%;height:260px;background:white;
+ border:2px dashed var(--gold);border-radius:10px;
+ touch-action:none;
+}
 .hidden{display:none!important}
-.note{background:#fff8e5;border-left:4px solid var(--gold);padding:10px;border-radius:8px}
-.muted{color:#64756e;font-size:.92rem}
-h2,h3{color:var(--g)}
-h2{margin:0 0 10px}
-footer{text-align:center;background:var(--g);color:white;padding:23px}
-a{color:#08734f}
-@media(max-width:760px){
-.book-spread{grid-template-columns:1fr}
-.book-page{min-height:68vh;max-height:75vh;padding:15px}
-.book-controls button{padding:8px 10px}
-.book-controls .page-count{font-size:.9rem}
+@media(max-width:600px){
+ .page{padding:15px}
+ nav{position:static}
+ nav button{font-size:12px;padding:8px}
+ .big-arabic{font-size:30px}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
-<div class="ar">أَكادِيمِيَّةُ الشَّيْخِ مَبْرُوكَ لِلتَّعْلِيمِ الإِسْلَامِيِّ</div>
-<h1>SHEIKH MABRUK ISLAMIC LEARNING ACADEMY</h1>
-<p>Learn Arabic • Read the Qur’an • Study Tajweed</p>
+ <h1>SHEIKH MABRUK ISLAMIC LEARNING ACADEMY</h1>
+ <p>أكاديمية الشيخ مبروك للتعليم الإسلامي</p>
+ <p>Learn • Practise • Understand • Grow</p>
 </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#alphabet">Letters</a>
-<a href="#words">Word formation</a>
-<a href="#writing">Writing</a>
-<a href="#quran">Qur’an</a>
-<a href="#tajweed">Tajweed</a>
-<a href="#library">Library</a>
-<a href="#contact">Contact</a>
+<nav id="mainNav">
+ <button data-page="home" class="active">Home</button>
+ <button data-page="alphabet">Alphabet</button>
+ <button data-page="qaida">Baghdadiyah Qaida</button>
+ <button data-page="words">Word Formation</button>
+ <button data-page="writing">Writing</button>
+ <button data-page="quran">Qur'an</button>
+ <button data-page="tajweed">Tajweed</button>
+ <button data-page="library">Islamic Library</button>
+ <button data-page="contact">Contact</button>
 </nav>
 
-<div class="book-controls">
-<button class="alt" id="previousPage" type="button">← Previous</button>
-<div class="page-count" id="pageCount" aria-live="polite">Opening the book…</div>
-<button id="nextPage" type="button">Next →</button>
-</div>
-
 <main>
-<section class="panel" id="home">
-<h2>Welcome to the Academy</h2>
-<p>Learn Arabic letters, build vocabulary, practise handwriting, read the Qur’an and study Tajweed foundations.</p>
-<div class="grid">
-<div class="tile"><b>Arabic foundations</b><br>Recognise letters and connected forms.</div>
-<div class="tile"><b>Word building</b><br>60 words with component letters and pronunciation.</div>
-<div class="tile"><b>Qur’an study</b><br>Arabic, Saheeh International translation and transliteration.</div>
-<div class="tile"><b>Practice</b><br>Trace letters with your finger or mouse.</div>
-</div>
-<p class="note">This is a static learning prototype. Student accounts, saved progress, private database and AI tutor are not yet active. Religious content should be checked with a qualified teacher.</p>
+
+<!-- HOME -->
+<section class="page active" id="home">
+ <h2>Welcome to Sheikh Mabruk Islamic Learning Academy</h2>
+ <p>Welcome to your Islamic learning centre. This academy is designed to help learners study Arabic, Qur'an recitation, Tajweed and other Islamic subjects.</p>
+ <div class="notice">
+  <strong>Learning reminder:</strong> Take your time, practise regularly and ask a qualified teacher whenever you need help with Qur'an recitation or Islamic rulings.
+ </div>
+ <h3>What you can learn here</h3>
+ <ul>
+  <li>Arabic alphabet and pronunciation</li>
+  <li>Baghdadiyah Qaida reading lessons</li>
+  <li>Arabic word formation and breakdown</li>
+  <li>Arabic handwriting and tracing</li>
+  <li>The Holy Qur'an with translation and transliteration</li>
+  <li>Tajweed lessons</li>
+  <li>Islamic learning resources</li>
+ </ul>
+ <p>Use the navigation above to open each learning section. The website displays one main section at a time.</p>
 </section>
 
-<section class="panel" id="alphabet">
-<h2>1. Arabic Alphabet</h2>
-<p>Tap a letter to hear its name using your device’s Arabic text-to-speech voice.</p>
-<div class="letters" id="letterGrid"></div>
-<h3>Connected forms example</h3>
-<div class="ar forms">بـ &nbsp; ـبـ &nbsp; ـب &nbsp; ب</div>
-<p class="muted">Beginning • middle • end • isolated. Some letters do not connect to the following letter.</p>
+<!-- ALPHABET -->
+<section class="page" id="alphabet">
+ <h2>Arabic Alphabet – الحروف الهجائية</h2>
+ <p>There are 28 basic Arabic letters. Select the sound button to hear the letter using your device's Arabic speech voice.</p>
+ <div id="alphabetGrid" class="letter-grid"></div>
 </section>
 
-<section class="panel" id="words">
-<h2>2. Word Formation — 60 Examples</h2>
-<p>Search words and hear their pronunciation. The letters are shown separately below each word.</p>
-<div class="row">
-<input id="search" type="search" placeholder="Search word or meaning">
-<select id="filter">
-<option value="all">All categories</option>
-<option value="everyday">Everyday words</option>
-<option value="faith">Faith and learning</option>
-<option value="people">People and places</option>
-</select>
-</div>
-<div class="grid" id="wordGrid" style="margin-top:12px"></div>
+<!-- BAGHDADIYAH QAIDA -->
+<section class="page" id="qaida">
+ <h2>Baghdadiyah Qaida – القاعدة البغدادية</h2>
+ <p>Learn Arabic reading step by step. Each lesson contains examples and pronunciation buttons.</p>
+ <div class="notice">
+  The voice buttons use your browser's Arabic text-to-speech voice. Pronunciation may vary by device. A qualified Qur'an teacher should check your recitation.
+ </div>
+ <div class="controls">
+  <button class="action" onclick="changeQaida(-1)">Previous lesson</button>
+  <strong id="qaidaCount">Lesson 1 of 8</strong>
+  <button class="action" onclick="changeQaida(1)">Next lesson</button>
+ </div>
+ <div id="qaidaLesson" class="lesson-panel"></div>
 </section>
 
-<section class="panel" id="writing">
-<h2>3. Arabic Handwriting Practice</h2>
-<p>Choose a letter and trace the pale guide using your finger or mouse. Clear the board to try again.</p>
-<div class="row">
-<label>Letter: <select id="traceLetter"></select></label>
-<button class="alt" id="clear">Clear board</button>
-<button class="alt" id="undo">Undo line</button>
-</div>
-<canvas id="board"></canvas>
-<div class="tile">
-<b>Visual writing direction</b>
-<p>Arabic is generally written from right to left. Follow the arrow. This is a direction reminder, not a complete stroke-order demonstration; ask an Arabic teacher to show the exact strokes.</p>
-<svg viewBox="0 0 300 75" width="100%" aria-label="Arrow from right to left">
-<path d="M270 30H30m0 0 18-14M30 30l18 14" stroke="#08734f" stroke-width="5" fill="none" stroke-linecap="round"/>
-<text x="150" y="65" text-anchor="middle" fill="#18352c">Start on the right, move left</text>
-</svg>
-</div>
+<!-- WORD FORMATION -->
+<section class="page" id="words">
+ <h2>Arabic Word Formation – تكوين الكلمات</h2>
+ <p>Study each word, listen to its pronunciation and see the letters used to form it.</p>
+ <input id="wordSearch" placeholder="Search Arabic word or English meaning..." oninput="renderWords()">
+ <div id="wordGrid" class="word-grid"></div>
 </section>
 
-<section class="panel" id="quran">
-<h2>4. The Noble Qur’an</h2>
-<p>Each verse is displayed with Arabic, Saheeh International English translation and transliteration.</p>
-
-<div class="row">
-<label>Surah: <select id="surah"></select></label>
-<label>Reciter:
-<select id="reciter">
-<option value="ar.alafasy">Mishary Rashid Alafasy</option>
-<option value="ar.sudais">Abdur Rahman As-Sudais</option>
-<option value="ar.minshawi">Mohamed Siddiq Al-Minshawi</option>
-<option value="ar.husary">Mahmoud Khalil Al-Husary</option>
-<option value="ar.hudhaify">Ali Al-Hudhaify</option>
-<option value="ar.shuraim">Saud Al-Shuraim</option>
-</select>
-</label>
-<button id="load">Load surah</button>
-</div>
-
-<!-- AUDIO PLAYER MOVED UP: IT NOW APPEARS BEFORE THE VERSES -->
-<div id="audioBox" class="audio-panel hidden">
-<h3>Listen to the selected Surah</h3>
-<audio id="audio" controls preload="none">
-Your browser does not support audio playback.
-</audio>
-<p class="muted">Choose a reciter above, then press Play. Audio streams online.</p>
-</div>
-
-<div class="row">
-<button class="alt" id="both">Arabic + translation</button>
-<button class="alt" id="latinOnly">Transliteration focus</button>
-</div>
-
-<p id="status" class="muted" aria-live="polite">Choose a surah and load it.</p>
-<div id="heading"></div>
-<div id="ayahs"></div>
-
-<p class="note">Basmalah: Al-Fātiḥah includes it as verse 1. At-Tawbah has no opening Basmalah. For other surahs it is displayed separately, not numbered as a verse in the standard numbering used here. Verify recitation and numbering with a trusted Mushaf and teacher.</p>
+<!-- WRITING -->
+<section class="page" id="writing">
+ <h2>Arabic Writing and Tracing – الكتابة</h2>
+ <p>Choose a letter and trace over the guide. Use your finger on a phone or a mouse on a computer.</p>
+ <select id="traceLetter" onchange="drawGuide()"></select>
+ <div class="notice">
+  Follow the shape of the faint letter with your finger. Arabic letters are generally written from right to left.
+ </div>
+ <canvas id="writingCanvas" width="900" height="300"></canvas>
+ <div class="controls">
+  <button class="action" onclick="undoDrawing()">Undo</button>
+  <button class="action" onclick="clearDrawing()">Clear</button>
+  <button class="action" onclick="say(document.getElementById('traceLetter').value)">Hear letter</button>
+ </div>
 </section>
 
-<section class="panel" id="tajweed">
-<h2>5. Tajweed — Original Study Lessons</h2>
-<p>These are original introductory explanations covering core Tajweed subjects. They are not a word-for-word copy of <span class="ar">هدايا المستفيد في أحكام التجويد</span>. Use the book itself with a teacher for its full treatment.</p>
+<!-- QURAN -->
+<section class="page" id="quran">
+ <h2>The Holy Qur'an – القرآن الكريم</h2>
+ <p>Select a Surah and reciter. The Arabic text, Saheeh International translation and transliteration are loaded online.</p>
+ <label for="surahSelect">Select Surah</label>
+ <select id="surahSelect"></select>
+ <label for="reciterSelect">Select reciter</label>
+ <select id="reciterSelect">
+  <option value="ar.alafasy">Mishary Rashid Alafasy</option>
+  <option value="ar.abdurrahmaansudais">Abdul Rahman Al-Sudais</option>
+  <option value="ar.hudhaify">Ali Al-Hudhaify</option>
+  <option value="ar.mahermuaiqly">Maher Al-Muaiqly</option>
+  <option value="ar.minshawi">Mohamed Siddiq Al-Minshawi</option>
+  <option value="ar.husary">Mahmoud Khalil Al-Husary</option>
+ </select>
+ <button class="action" onclick="loadSurah()">Load Surah</button>
+ <p id="quranStatus">Loading Surah list...</p>
 
-<div class="lesson">
-<h3>Lesson 1: Meaning and purpose</h3>
-<p>Tajweed is giving every letter its proper articulation point and characteristics during Qur’an recitation. Learn by listening and receiving correction from a qualified teacher.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 2: Makharij al-huruf</h3>
-<p>Letters emerge from specific areas including the throat, tongue, lips, nasal passage and open mouth/throat space. Practise each sound carefully.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 3: Noon sākinah and tanween</h3>
-<p>The four main rules are Iẓhār (clear pronunciation), Idghām (merging), Iqlāb (conversion) and Ikhfā’ (concealment). The following letter determines the rule.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 4: Meem sākinah</h3>
-<p>The principal rules are Ikhfā’ Shafawī before ب, Idghām Shafawī before م, and Iẓhār Shafawī with other letters.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 5: Madd</h3>
-<p>Madd is the lengthening of a vowel in specified circumstances. Its duration depends on its category and the recitation method being learned.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 6: Qalqalah</h3>
-<p>Qalqalah is a controlled echoing quality on ق ط ب ج د when they carry sukūn. Do not add an extra vowel sound.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 7: Tafkhīm and tarqīq</h3>
-<p>Tafkhīm is a fuller, heavier sound and tarqīq is a lighter sound. Rā’ and the word Allah have context-dependent rules.</p>
-</div>
-<div class="lesson">
-<h3>Lesson 8: Waqf and ibtidā’</h3>
-<p>Waqf means stopping and ibtidā’ means beginning again. Observe the signs in your Mushaf and avoid stops that distort the meaning.</p>
-</div>
-<p class="note">These summaries are introductory, not a substitute for a recognised Tajweed text and supervised recitation.</p>
+ <div id="audioArea" class="lesson-panel hidden">
+  <h3>Surah audio recitation</h3>
+  <audio id="surahAudio" controls style="width:100%"></audio>
+  <p id="audioInfo"></p>
+ </div>
+
+ <div class="controls">
+  <button class="small-btn" onclick="setQuranView('all')">Arabic + Translation</button>
+  <button class="small-btn" onclick="setQuranView('translation')">Translation</button>
+  <button class="small-btn" onclick="setQuranView('transliteration')">Transliteration</button>
+ </div>
+ <div id="quranVerses"></div>
 </section>
 
-<section class="panel" id="library">
-<h2>6. Islamic Learning Library</h2>
-<div class="grid">
-<div class="tile"><b>Qur’an</b><p><a href="https://quran.com/" target="_blank" rel="noopener">Quran.com</a></p></div>
-<div class="tile"><b>Qur’an API</b><p><a href="https://alquran.cloud/" target="_blank" rel="noopener">Al Quran Cloud</a></p></div>
-<div class="tile"><b>Hadith reference</b><p><a href="https://sunnah.com/" target="_blank" rel="noopener">Sunnah.com</a></p></div>
-<div class="tile"><b>Islamic questions</b><p><a href="https://islamqa.info/" target="_blank" rel="noopener">IslamQA</a> — compare rulings with trusted local scholars and your school of law.</p></div>
-</div>
+<!-- TAJWEED -->
+<section class="page" id="tajweed">
+ <h2>Tajweed – أحكام التجويد</h2>
+ <p>Learn introductory Tajweed rules. These are original short learning notes, not a reproduction of a published book.</p>
+ <div class="lesson-panel">
+  <h3>1. What is Tajweed?</h3>
+  <p>Tajweed means giving each Arabic letter its proper pronunciation and characteristics when reciting the Qur'an.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>2. Noon Saakin and Tanween</h3>
+  <p>The main rules are Izhar, Idgham, Iqlab and Ikhfa.</p>
+  <ul>
+   <li><strong>Izhar:</strong> Clear pronunciation.</li>
+   <li><strong>Idgham:</strong> Merging one sound into another.</li>
+   <li><strong>Iqlab:</strong> Changing the noon sound to a concealed meem sound before ب.</li>
+   <li><strong>Ikhfa:</strong> Concealing the noon sound with ghunnah.</li>
+  </ul>
+ </div>
+ <div class="lesson-panel">
+  <h3>3. Meem Saakin</h3>
+  <p>The three main rules are Ikhfa Shafawi, Idgham Shafawi and Izhar Shafawi.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>4. Ghunnah</h3>
+  <p>Ghunnah is a nasal sound. It is especially associated with نّ and مّ.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>5. Madd</h3>
+  <p>Madd means lengthening a vowel sound. Its types have different durations depending on the rule and recitation.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>6. Qalqalah</h3>
+  <p>Qalqalah is a slight echoing or bouncing quality on the letters ق ط ب ج د when they carry sukoon.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>7. Rules of Laam</h3>
+  <p>Study the rules of Laam in the definite article (ال), including the solar and lunar letters.</p>
+ </div>
+ <div class="lesson-panel">
+  <h3>8. Makharij al-Huruf</h3>
+  <p>Makharij are the articulation points from which Arabic letters are pronounced. Practise with a qualified teacher to correct the sounds.</p>
+ </div>
+ <div class="notice">
+  These notes are introductory. Please learn the exact rules, examples and recitation lengths from a qualified Tajweed teacher.
+ </div>
 </section>
 
-<section class="panel" id="contact">
-<h2>7. Contact the Academy</h2>
-<p>For questions about lessons or the website, use the enquiry form below.</p>
-<div class="note">This form is a safe design placeholder and is not connected to an inbox yet. Before accepting messages, a trusted adult should connect it to an adult-managed email or form account. Do not enter passwords, private documents or other sensitive information.</div>
-<form class="contact-form" id="contactForm">
-<label>Your name (optional)
-<input name="name" maxlength="60" autocomplete="name" placeholder="Name">
-</label>
-<label>Your message
-<textarea name="message" maxlength="1000" required placeholder="Write your enquiry"></textarea>
-</label>
-<button type="submit">Submit enquiry</button>
-<p class="contact-status" id="contactStatus" aria-live="polite"></p>
-</form>
+<!-- LIBRARY -->
+<section class="page" id="library">
+ <h2>Islamic Library – المكتبة الإسلامية</h2>
+ <p>Use these online resources for further study. Some resources may contain scholarly differences, so consult a qualified teacher.</p>
+ <ul>
+  <li><a href="https://quran.com/" target="_blank" rel="noopener">Qur'an.com – Qur'an reading and study</a></li>
+  <li><a href="https://sunnah.com/" target="_blank" rel="noopener">Sunnah.com – Hadith collections</a></li>
+  <li><a href="https://www.alim.org/" target="_blank" rel="noopener">Alim.org – Islamic learning resources</a></li>
+  <li><a href="https://www.islamweb.net/" target="_blank" rel="noopener">Islamweb – Islamic articles and questions</a></li>
+  <li><a href="https://www.alukah.net/" target="_blank" rel="noopener">Alukah – Arabic and Islamic resources</a></li>
+ </ul>
+ <h3>Suggested subjects</h3>
+ <ul>
+  <li>Fiqh according to the Maliki school</li>
+  <li>Sirah – life of Prophet Muhammad ﷺ</li>
+  <li>Aqidah and Tawheed</li>
+  <li>Hadith studies</li>
+  <li>Adhkar and Du'a</li>
+  <li>Arabic language</li>
+ </ul>
 </section>
+
+<!-- CONTACT -->
+<section class="page" id="contact">
+ <h2>Contact and Feedback</h2>
+ <p>This section is a local demonstration only. It does not send messages to the academy.</p>
+ <label>Your message</label>
+ <textarea id="messageBox" rows="5" placeholder="Write your feedback here..."></textarea>
+ <button class="action" onclick="contactMessage()">Submit</button>
+ <p id="contactStatus"></p>
+ <div class="notice">Do not enter passwords, verification codes, home addresses or other private information here.</div>
+</section>
+
+<div class="navigation">
+ <button id="previousPage" onclick="movePage(-1)">← Previous</button>
+ <span id="pageCount">Page 1 of 9</span>
+ <button id="nextPage" onclick="movePage(1)">Next →</button>
+</div>
+
 </main>
 
 <footer>
-<div class="ar">وَقُلْ رَبِّ زِدْنِي عِلْمًا</div>
-<p>“My Lord, increase me in knowledge.” (Qur’an 20:114)</p>
-Sheikh Mabruk Islamic Learning Academy
+ <p>Sheikh Mabruk Islamic Learning Academy</p>
+ <p>رَبِّ زِدْنِي عِلْمًا</p>
+ <p>“My Lord, increase me in knowledge.” – Qur'an 20:114</p>
 </footer>
 
 <script>
-// BOOK-STYLE PAGE NAVIGATION
-const bookMain=document.querySelector("main");
-const bookSections=[...bookMain.querySelectorAll(":scope > section")];
-const bookSpreads=[];
+/* MAIN PAGE NAVIGATION: ONE PAGE AT A TIME */
+const pages=[...document.querySelectorAll(".page")];
+const navButtons=[...document.querySelectorAll("#mainNav button")];
+let currentPage=0;
 
-for(let i=0;i<bookSections.length;i+=2){
-const spread=document.createElement("div");
-spread.className="book-spread";
-bookSections.slice(i,i+2).forEach(section=>{
-section.classList.add("book-page");
-spread.append(section);
+function showPage(index){
+ currentPage=Math.max(0,Math.min(index,pages.length-1));
+ pages.forEach((p,i)=>p.classList.toggle("active",i===currentPage));
+ navButtons.forEach((b,i)=>b.classList.toggle("active",i===currentPage));
+ document.getElementById("pageCount").textContent=
+  "Page "+(currentPage+1)+" of "+pages.length;
+ document.getElementById("previousPage").disabled=currentPage===0;
+ document.getElementById("nextPage").disabled=currentPage===pages.length-1;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function movePage(direction){showPage(currentPage+direction)}
+navButtons.forEach((button,index)=>{
+ button.addEventListener("click",()=>showPage(index));
 });
-bookMain.append(spread);
-bookSpreads.push(spread);
+showPage(0);
+
+/* ARABIC SPEECH */
+function say(text){
+ if(!("speechSynthesis" in window)){
+  alert("Arabic voice playback is not supported by this browser.");
+  return;
+ }
+ window.speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang="ar-SA";
+ utterance.rate=0.75;
+ utterance.pitch=1;
+ const voices=window.speechSynthesis.getVoices();
+ const arabicVoice=voices.find(v=>v.lang.toLowerCase().startsWith("ar"));
+ if(arabicVoice) utterance.voice=arabicVoice;
+ window.speechSynthesis.speak(utterance);
 }
 
-let currentBookPage=0;
-const pageCount=document.getElementById("pageCount");
-const previousPage=document.getElementById("previousPage");
-const nextPage=document.getElementById("nextPage");
-
-function mobileBook(){
-return window.matchMedia("(max-width:760px)").matches;
-}
-
-function showBookPage(index){
-currentBookPage=Math.max(0,Math.min(bookSections.length-1,index));
-const spreadIndex=Math.floor(currentBookPage/2);
-
-bookSpreads.forEach((spread,i)=>{
-spread.classList.toggle("active",i===spreadIndex);
-[...spread.children].forEach((page,j)=>{
-page.classList.toggle("mobile-hidden",mobileBook()&&(i*2+j)!==currentBookPage);
-});
-});
-
-const start=mobileBook()?currentBookPage+1:spreadIndex*2+1;
-const end=mobileBook()?currentBookPage+1:Math.min(spreadIndex*2+2,bookSections.length);
-pageCount.textContent=`Page${start===end?"":"s"} ${start}${start===end?"":"–"+end} of ${bookSections.length}`;
-previousPage.disabled=currentBookPage===0;
-nextPage.disabled=currentBookPage===bookSections.length-1;
-previousPage.style.opacity=previousPage.disabled?".45":"1";
-nextPage.style.opacity=nextPage.disabled?".45":"1";
-}
-
-function moveBookPage(direction){
-showBookPage(currentBookPage+(mobileBook()?direction:direction*2));
-}
-
-previousPage.addEventListener("click",()=>moveBookPage(-1));
-nextPage.addEventListener("click",()=>moveBookPage(1));
-
-document.querySelectorAll("nav a[href^='#']").forEach(link=>{
-link.addEventListener("click",event=>{
-const target=document.querySelector(link.getAttribute("href"));
-const index=bookSections.indexOf(target);
-if(index>=0){
-event.preventDefault();
-showBookPage(index);
-history.replaceState(null,"",link.getAttribute("href"));
-}
-});
-});
-
-window.addEventListener("resize",()=>showBookPage(currentBookPage));
-showBookPage(0);
-
-// CONTACT FORM PLACEHOLDER
-document.getElementById("contactForm").addEventListener("submit",event=>{
-event.preventDefault();
-document.getElementById("contactStatus").textContent=
-"This demo form is not connected yet, so no message was sent. Please ask the academy administrator to connect an adult-managed inbox before using it.";
-});
-
-// PAGE ELEMENTS
-const search=document.getElementById("search");
-const filter=document.getElementById("filter");
-const wordGrid=document.getElementById("wordGrid");
-const clearBtn=document.getElementById("clear");
-const undoBtn=document.getElementById("undo");
-const surah=document.getElementById("surah");
-const reciter=document.getElementById("reciter");
-const status=document.getElementById("status");
-const ayahs=document.getElementById("ayahs");
-const heading=document.getElementById("heading");
-const audioBox=document.getElementById("audioBox");
-const audio=document.getElementById("audio");
-const loadBtn=document.getElementById("load");
-const bothBtn=document.getElementById("both");
-const latinOnlyBtn=document.getElementById("latinOnly");
-
-// ARABIC ALPHABET
+/* ARABIC ALPHABET */
 const letters=[
-["ا","Alif"],["ب","Ba"],["ت","Ta"],["ث","Tha"],
-["ج","Jim"],["ح","Ha"],["خ","Kha"],["د","Dal"],
-["ذ","Dhal"],["ر","Ra"],["ز","Zay"],["س","Sin"],
-["ش","Shin"],["ص","Sad"],["ض","Dad"],["ط","Ta"],
-["ظ","Za"],["ع","Ayn"],["غ","Ghayn"],["ف","Fa"],
-["ق","Qaf"],["ك","Kaf"],["ل","Lam"],["م","Mim"],
-["ن","Nun"],["ه","Ha"],["و","Waw"],["ي","Ya"]
+ "ا","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص",
+ "ض","ط","ظ","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"
 ];
+const letterNames=[
+ "Alif","Baa","Taa","Thaa","Jeem","Haa","Khaa","Daal","Dhaal",
+ "Raa","Zaay","Seen","Sheen","Saad","Daad","Taa","Zaa",
+ "Ayn","Ghayn","Faa","Qaaf","Kaaf","Laam","Meem","Noon",
+ "Haa","Waaw","Yaa"
+];
+document.getElementById("alphabetGrid").innerHTML=letters.map((l,i)=>`
+ <div class="tile">
+  <span class="arabic">${l}</span>
+  <strong>${letterNames[i]}</strong><br>
+  <button class="small-btn" onclick="say('${l}')">Hear letter</button>
+ </div>`).join("");
 
-function say(t){
-if(!("speechSynthesis" in window))return;
-speechSynthesis.cancel();
-let u=new SpeechSynthesisUtterance(t);
-u.lang="ar-SA";
-u.rate=.8;
-speechSynthesis.speak(u);
+/* BAGHDADIYAH QAIDA LESSONS */
+const qaidaLessons=[
+ {
+  title:"Lesson 1: Recognising the Arabic Letters",
+  intro:"Learn to recognise and pronounce the 28 Arabic letters.",
+  examples:letters.map((l,i)=>({ar:l,label:letterNames[i]}))
+ },
+ {
+  title:"Lesson 2: Fathah – فَتْحَة",
+  intro:"Fathah is the short vowel mark written above a letter. It gives a short 'a' sound.",
+  examples:["بَ","تَ","ثَ","جَ","حَ","خَ","دَ","رَ","سَ","شَ","صَ","فَ","قَ","مَ","نَ","يَ"].map(x=>({ar:x,label:"Fathah"}))
+ },
+ {
+  title:"Lesson 3: Kasrah – كَسْرَة",
+  intro:"Kasrah is written below a letter and gives a short 'i' sound.",
+  examples:["بِ","تِ","ثِ","جِ","حِ","خِ","دِ","رِ","سِ","شِ","صِ","فِ","قِ","مِ","نِ","يِ"].map(x=>({ar:x,label:"Kasrah"}))
+ },
+ {
+  title:"Lesson 4: Dammah – ضَمَّة",
+  intro:"Dammah is written above a letter and gives a short 'u' sound.",
+  examples:["بُ","تُ","ثُ","جُ","حُ","خُ","دُ","رُ","سُ","شُ","صُ","فُ","قُ","مُ","نُ","يُ"].map(x=>({ar:x,label:"Dammah"}))
+ },
+ {
+  title:"Lesson 5: Sukoon – سُكُون",
+  intro:"Sukoon indicates that a letter has no vowel of its own. Join it carefully to the preceding sound.",
+  examples:["أَبْ","أَتْ","أَجْ","أَحْ","أَدْ","أَرْ","أَسْ","أَفْ","أَقْ","أَمْ","أَنْ","أَلْ"].map(x=>({ar:x,label:"Sukoon practice"}))
+ },
+ {
+  title:"Lesson 6: Tanween – تَنْوِين",
+  intro:"Tanween has three forms: Fathatain, Kasratain and Dammatain.",
+  examples:["بًا","بٍ","بٌ","تًا","تٍ","تٌ","مًا","مٍ","مٌ","نًا","نٍ","نٌ"].map(x=>({ar:x,label:"Tanween"}))
+ },
+ {
+  title:"Lesson 7: Shaddah – شَدَّة",
+  intro:"Shaddah indicates a doubled consonant. Give the letter its proper emphasis.",
+  examples:["بَّ","تَّ","جَّ","دَّ","رَّ","سَّ","مَّ","نَّ","قَّ","لَّ","مُحَمَّد","رَبَّ"].map(x=>({ar:x,label:"Shaddah"}))
+ },
+ {
+  title:"Lesson 8: Long Vowels and Reading Practice",
+  intro:"Alif, Waaw and Yaa can lengthen vowel sounds. Listen and practise slowly.",
+  examples:["بَا","بُو","بِي","تَا","تُو","تِي","سَا","سُو","سِي","مَا","مُو","مِي","نَا","نُو","نِي","قَالَ","نُورٌ","كِتَابٌ"].map(x=>({ar:x,label:"Reading practice"}))
+ }
+];
+let qaidaIndex=0;
+function renderQaida(){
+ const lesson=qaidaLessons[qaidaIndex];
+ document.getElementById("qaidaCount").textContent=
+  "Lesson "+(qaidaIndex+1)+" of "+qaidaLessons.length;
+ document.getElementById("qaidaLesson").innerHTML=`
+  <h3>${lesson.title}</h3>
+  <p>${lesson.intro}</p>
+  <div class="letter-grid">
+   ${lesson.examples.map(item=>`
+    <div class="tile">
+     <span class="arabic">${item.ar}</span>
+     <small>${item.label}</small><br>
+     <button class="small-btn" onclick="say('${item.ar}')">Listen</button>
+    </div>`).join("")}
+  </div>
+  <p class="notice">Listen, repeat carefully, and practise each example more than once.</p>`;
 }
+function changeQaida(direction){
+ qaidaIndex=Math.max(0,Math.min(qaidaLessons.length-1,qaidaIndex+direction));
+ renderQaida();
+}
+renderQaida();
 
-letters.forEach(([g,n])=>{
-let b=document.createElement("button");
-b.className="letter alt";
-b.innerHTML=`<span class="ar">${g}</span><small>${n}</small>`;
-b.onclick=()=>say(n);
-letterGrid.append(b);
-});
-
-// 60 ARABIC WORDS
+/* WORD FORMATION: 60 EXAMPLES */
 const words=[
-["كِتَاب","kitāb","book","faith"],
-["قَلَم","qalam","pen","everyday"],
-["بَيْت","bayt","house","people"],
-["بَاب","bāb","door","everyday"],
-["مَاء","mā’","water","everyday"],
-["شَمْس","shams","sun","everyday"],
-["قَمَر","qamar","moon","everyday"],
-["نُور","nūr","light","faith"],
-["عِلْم","ilm","knowledge","faith"],
-["طَالِب","ṭālib","student","people"],
-["مُعَلِّم","muallim","teacher","people"],
-["مَسْجِد","masjid","mosque","faith"],
-["مَدْرَسَة","madrasa","school","people"],
-["كُرْسِيّ","kursiyy","chair","everyday"],
-["مِفْتَاح","miftāḥ","key","everyday"],
-["سَمَاء","samā","sky","everyday"],
-["أَرْض","arḍ","earth / land","everyday"],
-["بَحْر","baḥr","sea","everyday"],
-["جَبَل","jabal","mountain","everyday"],
-["شَجَرَة","shajara","tree","everyday"],
-["وَلَد","walad","boy / child","people"],
-["بِنْت","bint","girl / daughter","people"],
-["أَب","ab","father","people"],
-["أُمّ","umm","mother","people"],
-["أَخ","akh","brother","people"],
-["أُخْت","ukht","sister","people"],
-["صَدِيق","ṣadīq","friend","people"],
-["رَجُل","rajul","man","people"],
-["اِمْرَأَة","imra’a","woman","people"],
-["إِنْسَان","insān","human being","people"],
-["يَوْم","yawm","day","everyday"],
-["لَيْل","layl","night","everyday"],
-["صَبَاح","ṣabāḥ","morning","everyday"],
-["مَسَاء","masā","evening","everyday"],
-["طَعَام","ṭaām","food","everyday"],
-["لَبَن","laban","milk","everyday"],
-["خُبْز","khubz","bread","everyday"],
-["تُفَّاح","tuffāḥ","apple","everyday"],
-["سُوق","sūq","market","everyday"],
-["مَدِينَة","madīna","city","people"],
-["اللَّه","Allāh","Allah","faith"],
-["رَبّ","rabb","Lord","faith"],
-["قُرْآن","Qur’ān","Qur’an","faith"],
-["إِيمَان","īmān","faith","faith"],
-["إِسْلَام","islām","Islam","faith"],
-["صَلَاة","ṣalāh","prayer","faith"],
-["زَكَاة","zakāh","obligatory charity","faith"],
-["صَوْم","ṣawm","fasting","faith"],
-["دُعَاء","duā","supplication","faith"],
-["رَحْمَة","raḥmah","mercy","faith"],
-["جَنَّة","jannah","Paradise / garden","faith"],
-["نَار","nār","fire","faith"],
-["حَمْد","ḥamd","praise","faith"],
-["سَلَام","salām","peace","faith"],
-["حَقّ","ḥaqq","truth / right","faith"],
-["صِدْق","ṣidq","truthfulness","faith"],
-["صَبْر","ṣabr","patience","faith"],
-["شُكْر","shukr","gratitude","faith"],
-["هُدًى","hudā","guidance","faith"],
-["حَدِيث","ḥadīth","prophetic report","faith"]
+ ["بَابٌ","door","ب + ا + ب"],
+ ["كِتَابٌ","book","ك + ت + ا + ب"],
+ ["قَلَمٌ","pen","ق + ل + م"],
+ ["بَيْتٌ","house","ب + ي + ت"],
+ ["مَاءٌ","water","م + ا + ء"],
+ ["شَمْسٌ","sun","ش + م + س"],
+ ["قَمَرٌ","moon","ق + م + ر"],
+ ["نَجْمٌ","star","ن + ج + م"],
+ ["مَسْجِدٌ","mosque","م + س + ج + د"],
+ ["مُعَلِّمٌ","teacher","م + ع + ل + م"],
+ ["طَالِبٌ","student","ط + ا + ل + ب"],
+ ["مَدْرَسَةٌ","school","م + د + ر + س + ة"],
+ ["مَكْتَبٌ","desk","م + ك + ت + ب"],
+ ["كُرْسِيٌّ","chair","ك + ر + س + ي"],
+ ["بَحْرٌ","sea","ب + ح + ر"],
+ ["جَبَلٌ","mountain","ج + ب + ل"],
+ ["وَلَدٌ","boy","و + ل + د"],
+ ["بِنْتٌ","girl","ب + ن + ت"],
+ ["رَجُلٌ","man","ر + ج + ل"],
+ ["اِمْرَأَةٌ","woman","ا + م + ر + أ + ة"],
+ ["أَبٌ","father","أ + ب"],
+ ["أُمٌّ","mother","أ + م"],
+ ["أَخٌ","brother","أ + خ"],
+ ["أُخْتٌ","sister","أ + خ + ت"],
+ ["يَدٌ","hand","ي + د"],
+ ["عَيْنٌ","eye","ع + ي + ن"],
+ ["رَأْسٌ","head","ر + أ + س"],
+ ["فَمٌ","mouth","ف + م"],
+ ["أَنْفٌ","nose","أ + ن + ف"],
+ ["قَلْبٌ","heart","ق + ل + ب"],
+ ["طَعَامٌ","food","ط + ع + ا + م"],
+ ["لَبَنٌ","milk","ل + ب + ن"],
+ ["خُبْزٌ","bread","خ + ب + ز"],
+ ["تَمْرٌ","dates","ت + م + ر"],
+ ["تُفَّاحٌ","apple","ت + ف + ا + ح"],
+ ["مَوْزٌ","banana","م + و + ز"],
+ ["بُرْتُقَالٌ","orange","ب + ر + ت + ق + ا + ل"],
+ ["سَمَكٌ","fish","س + م + ك"],
+ ["دَجَاجٌ","chicken","د + ج + ا + ج"],
+ ["لَحْمٌ","meat","ل + ح + م"],
+ ["حَلِيبٌ","milk","ح + ل + ي + ب"],
+ ["صَدِيقٌ","friend","ص + د + ي + ق"],
+ ["سَلَامٌ","peace","س + ل + ا + م"],
+ ["رَحْمَةٌ","mercy","ر + ح + م + ة"],
+ ["عِلْمٌ","knowledge","ع + ل + م"],
+ ["نُورٌ","light","ن + و + ر"],
+ ["حَقٌّ","truth","ح + ق"],
+ ["صَبْرٌ","patience","ص + ب + ر"],
+ ["شُكْرٌ","gratitude","ش + ك + ر"],
+ ["دِينٌ","religion","د + ي + ن"],
+ ["قُرْآنٌ","Qur'an","ق + ر + آ + ن"],
+ ["صَلَاةٌ","prayer","ص + ل + ا + ة"],
+ ["زَكَاةٌ","charity","ز + ك + ا + ة"],
+ ["صَوْمٌ","fasting","ص + و + م"],
+ ["حَجٌّ","pilgrimage","ح + ج"],
+ ["جَنَّةٌ","Paradise","ج + ن + ة"],
+ ["نَارٌ","fire","ن + ا + ر"],
+ ["خَيْرٌ","goodness","خ + ي + ر"],
+ ["حَمْدٌ","praise","ح + م + د"],
+ ["اللَّهُ","Allah","ا + ل + ل + ه"]
 ];
-
 function renderWords(){
-wordGrid.innerHTML="";
-let q=search.value.toLowerCase();
-let f=filter.value;
-words.forEach(([ar,lat,en,cat])=>{
-if((f!=="all"&&f!==cat)||!(ar+" "+lat+" "+en).toLowerCase().includes(q))return;
-let d=document.createElement("div");
-d.className="word";
-let chars=[...ar.replace(/[\u064B-\u065F\u0670\u0640]/g,"")];
-d.innerHTML=`
-<div class="ar">${ar}</div>
-<b>${en}</b>
-<div class="muted">${lat}</div>
-<div class="parts">${chars.map(c=>`<span class="part ar">${c}</span>`).join("")}</div>
-<button class="alt">Hear word</button>`;
-d.querySelector("button").onclick=()=>say(ar);
-wordGrid.append(d);
-});
+ const search=document.getElementById("wordSearch").value.toLowerCase();
+ const filtered=words.filter(w=>w.join(" ").toLowerCase().includes(search));
+ document.getElementById("wordGrid").innerHTML=filtered.map(w=>`
+  <div class="tile">
+   <span class="arabic">${w[0]}</span>
+   <strong>${w[1]}</strong>
+   <p><small>Letters: ${w[2]}</small></p>
+   <button class="small-btn" onclick="say('${w[0]}')">Listen</button>
+  </div>`).join("")||"<p>No matching word found.</p>";
 }
-search.oninput=renderWords;
-filter.onchange=renderWords;
 renderWords();
 
-// HANDWRITING AND TRACING BOARD
-const board=document.getElementById("board");
-const cx=board.getContext("2d");
-const trace=document.getElementById("traceLetter");
-let lines=[],line=[],down=false;
-
-letters.forEach(([g,n])=>{
-let o=document.createElement("option");
-o.value=g;
-o.textContent=g+" — "+n;
-trace.append(o);
+/* WRITING CANVAS */
+const canvas=document.getElementById("writingCanvas");
+const ctx=canvas.getContext("2d");
+let drawing=false,lastX=0,lastY=0,history=[];
+const traceSelect=document.getElementById("traceLetter");
+letters.forEach(l=>{
+ const option=document.createElement("option");
+ option.value=l;option.textContent=l;traceSelect.appendChild(option);
 });
-
-function paint(){
-let w=board.clientWidth,h=board.clientHeight;
-cx.clearRect(0,0,w,h);
-cx.fillStyle="#fffdf4";
-cx.fillRect(0,0,w,h);
-cx.fillStyle="#a8b5aa";
-cx.globalAlpha=.35;
-cx.font=`${Math.min(170,h*.68)}px serif`;
-cx.textAlign="center";
-cx.textBaseline="middle";
-cx.fillText(trace.value,w/2,h/2);
-cx.globalAlpha=1;
-cx.strokeStyle="#08734f";
-cx.lineWidth=5;
-cx.lineCap="round";
-cx.lineJoin="round";
-[...lines,line].forEach(s=>{
-cx.beginPath();
-s.forEach((p,i)=>i?cx.lineTo(p.x,p.y):cx.moveTo(p.x,p.y));
-cx.stroke();
+function saveCanvas(){history.push(canvas.toDataURL());if(history.length>20)history.shift()}
+function drawGuide(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle="#e4e4e4";
+ ctx.font="190px Times New Roman";
+ ctx.textAlign="center";
+ ctx.textBaseline="middle";
+ ctx.fillText(traceSelect.value,450,145);
+ ctx.strokeStyle="#d6ad45";ctx.setLineDash([8,8]);
+ ctx.beginPath();ctx.moveTo(40,260);ctx.lineTo(860,260);ctx.stroke();
+ ctx.setLineDash([]);
+ history=[];saveCanvas();
+}
+function getPosition(e){
+ const r=canvas.getBoundingClientRect();
+ return {
+  x:(e.clientX-r.left)*canvas.width/r.width,
+  y:(e.clientY-r.top)*canvas.height/r.height
+ };
+}
+canvas.addEventListener("pointerdown",e=>{
+ drawing=true;canvas.setPointerCapture(e.pointerId);
+ const p=getPosition(e);lastX=p.x;lastY=p.y;
 });
-}
-
-function fit(){
-let r=board.getBoundingClientRect();
-let d=window.devicePixelRatio||1;
-board.width=r.width*d;
-board.height=r.height*d;
-cx.setTransform(d,0,0,d,0,0);
-paint();
-}
-
-function pos(e){
-let r=board.getBoundingClientRect();
-return{x:e.clientX-r.left,y:e.clientY-r.top};
-}
-
-board.onpointerdown=e=>{
-down=true;
-board.setPointerCapture(e.pointerId);
-line=[pos(e)];
-paint();
-};
-board.onpointermove=e=>{
-if(down){
-line.push(pos(e));
-paint();
-}
-};
-function finish(){
-if(down){
-down=false;
-if(line.length)lines.push(line);
-line=[];
-paint();
-}
-}
-board.onpointerup=finish;
-board.onpointercancel=finish;
-trace.onchange=()=>{
-lines=[];
-paint();
-};
-clearBtn.onclick=()=>{
-lines=[];
-line=[];
-paint();
-};
-undoBtn.onclick=()=>{
-lines.pop();
-paint();
-};
-window.addEventListener("resize",fit);
-fit();
-
-// QUR'AN DATA
-async function init(){
-try{
-let r=await fetch("https://api.alquran.cloud/v1/surah");
-let j=await r.json();
-j.data.forEach(s=>{
-let o=document.createElement("option");
-o.value=s.number;
-o.textContent=s.number+". "+s.englishName+" — "+s.name;
-surah.append(o);
+canvas.addEventListener("pointermove",e=>{
+ if(!drawing)return;
+ const p=getPosition(e);
+ ctx.strokeStyle="#064e3b";ctx.lineWidth=7;
+ ctx.lineCap="round";ctx.lineJoin="round";
+ ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);ctx.stroke();
+ lastX=p.x;lastY=p.y;
 });
-}catch(e){
-status.textContent="Surah list unavailable. Check your internet connection.";
+canvas.addEventListener("pointerup",()=>{if(drawing){drawing=false;saveCanvas()}});
+canvas.addEventListener("pointercancel",()=>drawing=false);
+function clearDrawing(){drawGuide()}
+function undoDrawing(){
+ if(history.length<=1){drawGuide();return}
+ history.pop();
+ const img=new Image();
+ img.onload=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0)};
+ img.src=history[history.length-1];
 }
+drawGuide();
+
+/* QUR'AN SECTION */
+let surahList=[];
+let quranData=[];
+let quranView="all";
+const surahSelect=document.getElementById("surahSelect");
+const reciterSelect=document.getElementById("reciterSelect");
+
+async function loadSurahList(){
+ try{
+  const response=await fetch("https://api.alquran.cloud/v1/surah");
+  const data=await response.json();
+  if(data.code!==200)throw new Error("Surah list unavailable");
+  surahList=data.data;
+  surahSelect.innerHTML=surahList.map(s=>
+   `<option value="${s.number}">${s.number}. ${s.englishName} – ${s.name}</option>`
+  ).join("");
+  document.getElementById("quranStatus").textContent="Choose a Surah and reciter.";
+ }catch(e){
+  document.getElementById("quranStatus").textContent=
+   "Unable to load Surah list. Check your internet connection and refresh.";
+ }
 }
-
-function safe(t){
-return String(t).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
+function setQuranView(view){
+ quranView=view;renderVerses();
 }
-
-let mode="both";
-
-function showMode(){
-document.querySelectorAll(".latin").forEach(x=>{
-x.classList.toggle("hidden",mode==="both");
-});
-document.querySelectorAll(".translation").forEach(x=>{
-x.classList.toggle("hidden",mode==="latin");
-});
-}
-
 async function loadSurah(){
-status.textContent="Loading Arabic, translation and transliteration…";
-ayahs.innerHTML="";
-heading.innerHTML="";
-audioBox.classList.add("hidden");
-audio.pause();
-audio.removeAttribute("src");
-audio.load();
-
-try{
-let n=surah.value||1;
-let r=await fetch(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,en.sahih,en.transliteration`);
-let j=await r.json();
-
-if(j.code!==200||j.data.length<3){
-throw Error("Text editions unavailable");
+ const number=surahSelect.value;
+ if(!number)return;
+ const status=document.getElementById("quranStatus");
+ status.textContent="Loading Qur'an text...";
+ document.getElementById("quranVerses").innerHTML="";
+ document.getElementById("audioArea").classList.add("hidden");
+ try{
+  const editions=["quran-uthmani","en.sahih","en.transliteration",reciterSelect.value];
+  const results=await Promise.all(editions.map(async edition=>{
+   const r=await fetch(`https://api.alquran.cloud/v1/surah/${number}/${edition}`);
+   const j=await r.json();
+   if(j.code!==200)throw new Error("Could not load "+edition);
+   return j.data;
+  }));
+  quranData=results[0].ayahs.map((a,i)=>({
+   arabic:a.text,
+   translation:results[1].ayahs[i]?.text||"",
+   transliteration:results[2].ayahs[i]?.text||"",
+   audio:results[3].ayahs[i]?.audio||""
+  }));
+  const surah=surahList.find(s=>s.number===Number(number));
+  status.textContent=surah.englishName+" – "+surah.name+" ("+surah.numberOfAyahs+" verses)";
+  const audioArea=document.getElementById("audioArea");
+  const player=document.getElementById("surahAudio");
+  const firstAudio=quranData.find(v=>v.audio)?.audio;
+  if(firstAudio){
+   player.src=firstAudio;
+   audioArea.classList.remove("hidden");
+   document.getElementById("audioInfo").textContent=
+    "Audio stream: "+reciterSelect.options[reciterSelect.selectedIndex].text+
+    ". Use the player above to listen to the first verse.";
+  }
+  renderVerses();
+ }catch(e){
+  status.textContent="Unable to load this Surah. Please check your internet connection or try another reciter.";
+ }
 }
-
-let [a,t,l]=j.data;
-
-heading.innerHTML=`
-<h3>${safe(a.englishName)} (${safe(a.name)})</h3>
-<p class="muted">${safe(a.englishNameTranslation)} • ${a.numberOfAyahs} verses</p>`;
-
-if(+n!==1&&+n!==9){
-let b=document.createElement("div");
-b.className="basmala ar";
-b.textContent="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
-heading.append(b);
+function renderVerses(){
+ const container=document.getElementById("quranVerses");
+ if(!quranData.length){container.innerHTML="";return}
+ container.innerHTML=quranData.map((v,i)=>{
+  let html="";
+  if(quranView!=="translation"&&quranView!=="transliteration")
+   html+=`<div class="verse-ar arabic">${v.arabic}</div>`;
+  if(quranView==="all"||quranView==="translation")
+   html+=`<p class="translation">${v.translation}</p>`;
+  if(quranView==="all"||quranView==="transliteration")
+   html+=`<p class="transliteration">${v.transliteration}</p>`;
+  return `<div class="verse">
+   ${html}
+   ${v.audio?`<button class="small-btn" onclick="playAyah(${i})">Play verse ${i+1}</button>`:""}
+   <small>Verse ${i+1}</small>
+  </div>`;
+ }).join("");
 }
-
-a.ayahs.forEach((v,i)=>{
-let d=document.createElement("article");
-d.className="ayah";
-d.innerHTML=`
-<div class="muted">VERSE ${v.numberInSurah}</div>
-<div class="arabic">${safe(v.text)}</div>
-<div class="latin">${safe(l.ayahs[i]?.text||"Transliteration unavailable")}</div>
-<div class="translation">${safe(t.ayahs[i]?.text||"Translation unavailable")}</div>`;
-ayahs.append(d);
-});
-
-showMode();
-
-// Set audio immediately after the chosen surah is loaded.
-// The player is already positioned above the written verses.
-audio.src=`https://cdn.islamic.network/quran/audio-surah/128/${reciter.value}/${n}.mp3`;
-audio.load();
-audioBox.classList.remove("hidden");
-
-status.textContent="Surah loaded. The audio player is above the verses. Press Play to listen.";
-
-}catch(e){
-status.textContent="Unable to load Qur’an data. Check your connection and try again. "+e.message;
+function playAyah(index){
+ const audio=quranData[index]?.audio;
+ if(!audio)return;
+ const player=document.getElementById("surahAudio");
+ player.src=audio;
+ player.play().catch(()=>alert("Tap the audio player to start playback."));
+ document.getElementById("audioArea").classList.remove("hidden");
+ document.getElementById("audioInfo").textContent="Playing verse "+(index+1);
 }
+loadSurahList();
+
+/* CONTACT DEMO */
+function contactMessage(){
+ const value=document.getElementById("messageBox").value.trim();
+ const status=document.getElementById("contactStatus");
+ if(!value){status.textContent="Please write a message first.";return}
+ status.textContent="Thank you for your feedback. This demonstration form does not send messages.";
+ document.getElementById("messageBox").value="";
 }
-
-loadBtn.onclick=loadSurah;
-
-function setSurahAudio(){
-audio.pause();
-audio.src=`https://cdn.islamic.network/quran/audio-surah/128/${reciter.value}/${surah.value||1}.mp3`;
-audio.load();
-}
-
-reciter.onchange=()=>{
-if(!audioBox.classList.contains("hidden")){
-setSurahAudio();
-status.textContent="Reciter changed. Press Play to stream the selected recitation.";
-}
-};
-
-audio.onerror=()=>{
-status.textContent="The audio stream could not be loaded. Check your connection or try another reciter.";
-};
-
-bothBtn.onclick=()=>{
-mode="both";
-showMode();
-};
-
-latinOnlyBtn.onclick=()=>{
-mode="latin";
-showMode();
-};
-
-init();
 </script>
 </body>
 </html>
